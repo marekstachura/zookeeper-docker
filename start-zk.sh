@@ -1,3 +1,11 @@
+#!/bin/bash
+
+: ${ZOOKEEPER_MAXCLIENTCNXNS}
+
+if [[ -n ${ZOOKEEPER_MAXCLIENTCNXNS} ]]; then
+  echo "maxClientCnxns=${ZOOKEEPER_MAXCLIENTCNXNS}" >> /opt/zookeeper-3.4.6/conf/zoo.cfg
+fi
+
 sed -i -r 's|#(log4j.appender.ROLLINGFILE.MaxBackupIndex.*)|\1|g' $ZK_HOME/conf/log4j.properties
 sed -i -r 's|#autopurge|autopurge|g' $ZK_HOME/conf/zoo.cfg
 
